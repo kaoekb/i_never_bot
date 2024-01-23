@@ -1,16 +1,14 @@
-SERVICE_NAME = $(shell basename $(CURDIR))
-
 .PHONY: install start enable status
 
 install:
-    sudo cp $(SERVICE_NAME).service /etc/systemd/system/
+    sudo cp i_never_bot.service /etc/systemd/system/
     sudo systemctl daemon-reload
 
 start:
-    sudo systemctl start $(SERVICE_NAME)
+    sudo systemctl start i_never_bot
 
 enable:
-    sudo systemctl enable $(SERVICE_NAME)
+    sudo systemctl enable i_never_bot
 
 status:
-    sudo systemctl status $(SERVICE_NAME)
+    sudo systemctl status i_never_bot
