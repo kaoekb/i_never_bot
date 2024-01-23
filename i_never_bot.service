@@ -1,0 +1,12 @@
+[Unit]
+Description=$(SERVICE_NAME)
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/root/game/$(SERVICE_NAME)
+ExecStart=/usr/bin/python3 /root/game/$(SERVICE_NAME)/$(SERVICE_NAME).py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
