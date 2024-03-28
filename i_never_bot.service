@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 User=root
-WorkingDirectory=/root/game/i_never_bot
-ExecStart=/usr/bin/python3 /root/game/i_never_bot/i_never_bot.py
+WorkingDirectory=/root/games/i_never_bot
+ExecStart=/usr/bin/python3 /root/games/i_never_bot/i_never_bot.py
 Restart=always
 
 [Install]
