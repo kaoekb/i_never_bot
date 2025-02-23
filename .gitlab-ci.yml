@@ -4,7 +4,7 @@ stages:
   - deploy
 
 variables:
-  DOCKER_IMAGE: registry.gitlab.com/your_project/telegram_bot
+  DOCKER_IMAGE: registry.gitlab.com/i_never_bot
 
 build:
   stage: build
