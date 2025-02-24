@@ -1,24 +1,38 @@
-# .gitlab-ci.yml
+# # .gitlab-ci.yml
+# stages:
+#   - build
+#   - deploy
+
+# variables:
+#   DOCKER_IMAGE: registry.gitlab.com/i_never_bot/i_never_bot
+
+# build:
+#   stage: build
+#   script:
+#     - docker build -t $DOCKER_IMAGE .
+#     - docker push $DOCKER_IMAGE
+#   only:
+#     - main
+
+# deploy:
+#   stage: deploy
+#   script:
+#     - docker-compose down
+#     - docker-compose pull
+#     - docker-compose up -d
+#   only:
+#     - main
+
 stages:
   - build
   - deploy
 
-variables:
-  DOCKER_IMAGE: registry.gitlab.com/i_never_bot
-
-build:
+build-job:
   stage: build
   script:
-    - docker build -t $DOCKER_IMAGE .
-    - docker push $DOCKER_IMAGE
-  only:
-    - main
+    docker build -t i_never_bot .
 
-deploy:
+deploy-job:
   stage: deploy
   script:
-    - docker-compose down
-    - docker-compose pull
-    - docker-compose up -d
-  only:
-    - main
+    docker-compose up -d

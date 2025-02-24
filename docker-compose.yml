@@ -1,40 +1,20 @@
 # docker-compose.yml
-# version: '3.8'
+version: '3.8'
 
-# i_never_bot:
-#   build:
-#     context: .
-#   # env_file:
-#   #   - .env
-#   environment:
-#     # - Token_tg_1=${Token_tg_1}
-#     # - Your_user_ID=${Your_user_ID}
-#     - db=${db}
-#     - Token_tg=${Token_tg}
-#     # - Token_MDB=${Token_MDB}
-#     - Your_user_ID=${Your_user_ID}
-#   volumes:
-#     - ./logs:/app/logs
-#   restart: always
+i_never_bot:
+  build:
+    context: .
+  # env_file:
+  #   - .env
+  environment:
+    # - Token_tg_1=${Token_tg_1}
+    # - Your_user_ID=${Your_user_ID}
+    - db=${db}
+    - Token_tg=${Token_tg}
+    # - Token_MDB=${Token_MDB}
+    - Your_user_ID=${Your_user_ID}
+  volumes:
+    - ./logs:/app/logs
+  restart: always
 
 
-stages:
-  - build
-  - test
-  - deploy
-
-build-job:
-  stage: build
-  script:
-    docker build -t i_never_bot .
-
-test-job:
-  stage: test
-  script:
-    echo "test"
-    # docker run -it --rm game_of_rapprochement_bot -s -v
-
-deploy-job:
-  stage: deploy
-  script:
-    docker-compose up -d
