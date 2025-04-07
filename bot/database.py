@@ -1,6 +1,6 @@
 # database.py
 from pymongo import MongoClient, errors
-from config import MONGO_URI, ADMIN_ID
+from config import MONGO_URI
 import logging
 import time
 from bot.utils import notify_admin
