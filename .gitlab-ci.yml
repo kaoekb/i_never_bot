@@ -23,18 +23,53 @@
 #   only:
 #     - main
 
+# stages:
+#   - build
+#   - deploy
+
+# build-job:
+#   stage: build
+#   script:
+#     - docker build -t i_never_bot .
+
+
+# deploy-job:
+#   stage: deploy
+#   script:
+#     - docker-compose down || true
+#     - docker-compose up -d
+
+image: docker:latest
+
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay2
+
 stages:
+  - cleanup
   - build
   - deploy
+
+cleanup-old-images:
+  stage: cleanup
+  script:
+    - echo "🧹 Удаляем старые образы i_never_bot..."
+    - docker image prune -f || true
+    - docker rmi $(docker images "i_never_bot" --format "{{.ID}}" | tail -n +2) || true
+  only:
+    - main
 
 build-job:
   stage: build
   script:
+    - echo "🔧 Собираем новый образ..."
     - docker build -t i_never_bot .
-
 
 deploy-job:
   stage: deploy
   script:
+    - echo "🚀 Деплой..."
     - docker-compose down || true
     - docker-compose up -d
