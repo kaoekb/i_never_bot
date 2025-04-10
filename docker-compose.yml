@@ -4,14 +4,8 @@ services:
   i_never_bot:
     build:
       context: .
-    # env_file:
-    #   - .env
     environment:
-      # - Token_tg_1=${Token_tg_1}
-      # - Your_user_ID=${Your_user_ID}
-      # - db=${db}
       - Token_tg=${Token_tg}
-      # - Token_MDB=${Token_MDB}
       - Token_MDB=${Token_MDB}
 
       - Your_user_ID=${Your_user_ID}
