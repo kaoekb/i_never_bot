@@ -30,9 +30,11 @@ stages:
 build-job:
   stage: build
   script:
-    docker build -t i_never_bot .
+    - docker build -t i_never_bot .
+
 
 deploy-job:
   stage: deploy
   script:
-    docker-compose up -d
+    - docker-compose down || true
+    - docker-compose up -d
