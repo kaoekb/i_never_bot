@@ -5,7 +5,7 @@ import logging
 import time
 from bot.utils import notify_admin
 
-# Настройка логгера с указанием времени
+# Настройка логгера с временем
 logger = logging.getLogger(__name__)
 if not logger.hasHandlers():
     logging.basicConfig(
@@ -28,8 +28,20 @@ def connect_to_mongo():
             notify_admin(f"❌ Критическая ошибка подключения к MongoDB: {e}")
             time.sleep(5)
 
+def log_collections_summary():
+    try:
+        users_count = users_collection.count_documents({})
+        ads_count = ads_collection.count_documents({})
+        stats_count = stats_collection.count_documents({})
+        logger.info(f"📊 Статистика коллекций: Users={users_count}, Ads={ads_count}, Stats={stats_count}")
+    except Exception as e:
+        logger.error(f"⚠ Ошибка при получении статистики коллекций: {e}")
+
 client = connect_to_mongo()
 db = client["i_never_bot"]
 users_collection = db["Users"]
 ads_collection = db["Ads"]
 stats_collection = db["Stats"]
+
+# Логируем статистику после подключения
+log_collections_summary()
