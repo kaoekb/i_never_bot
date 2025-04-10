@@ -25,7 +25,7 @@ def connect_to_mongo():
             time.sleep(5)
         except Exception as e:
             logger.critical(f"❌ Критическая ошибка MongoDB: {e}")
-            notify_admin(f"❌ Критическая ошибка подключения к MongoDB: {e}")
+            # notify_admin(f"❌ Критическая ошибка подключения к MongoDB: {e}")
             time.sleep(5)
 
 def log_collections_summary():
