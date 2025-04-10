@@ -26,12 +26,12 @@ def connect_to_mongo(bot=None):
             logger.info("✅ Успешное подключение к MongoDB")
             return client
         except errors.ServerSelectionTimeoutError:
-            logger.error("❌ Ошибка подключения к MongoDB. Повторная попытка через 5 секунд...")
+            logger.error("1❌ Ошибка подключения к MongoDB. Повторная попытка через 5 секунд...")
             time.sleep(5)
         except Exception as e:
-            logger.critical("❌ Критическая ошибка MongoDB: %s", str(e))
+            logger.critical("1❌ Критическая ошибка MongoDB: %s", str(e))
             if bot:
-                notify_admin(bot, f"❌ Критическая ошибка подключения к MongoDB:\n{e}")
+                notify_admin(bot, f"1❌ Критическая ошибка подключения к MongoDB:\n{e}")
             time.sleep(5)
 
 def log_collections_summary():
