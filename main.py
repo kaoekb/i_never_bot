@@ -13,7 +13,13 @@ logging.getLogger().handlers.clear()
 log_dir = "logs"
 if not os.path.exists(log_dir):
     os.makedirs(log_dir)
-
+    
+# Очистка логов при старте
+log_file_path = "logs/bot.log"
+if os.path.exists(log_file_path):
+    with open(log_file_path, 'w', encoding='utf-8') as f:
+        f.truncate()
+        
 # Настройки логирования
 logging.basicConfig(
     level=logging.INFO,
