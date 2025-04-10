@@ -4,14 +4,13 @@ from config import MONGO_URI
 import logging
 import time
 
-# Настройка логгера
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
 
-# Плейсхолдеры для глобальных переменных
+# Переменные будут инициализированы позже в main.py
 client = None
 db = None
 users_collection = None
