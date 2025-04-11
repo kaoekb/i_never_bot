@@ -7,8 +7,8 @@ import logging
 
 load_dotenv()
 BOT_TOKEN = os.getenv('Token_tg')
-DB_USER = os.getenv('DB_USER')
-DB_PASS = os.getenv('DB_PASS')
+# DB_USER = os.getenv('DB_USER')
+# DB_PASS = os.getenv('DB_PASS')
 # db = os.getenv("Token_MDB")
 
 MONGO_URI = 'mongodb+srv://Anton:12345@cluster0.w6k4v.mongodb.net/?retryWrites=true&w=majority'
