@@ -1,18 +1,17 @@
 from telebot import types
 import logging
 import os
-import bot.database as db  # Импортируем весь модуль database, чтобы использовать актуальные коллекции
+import bot.database as db
 from config import ADMIN_ID
 from bot.utils import notify_admin
 
 logging.basicConfig(level=logging.INFO)
 
-# Глобальная переменная для бота, которая устанавливается в register_admin_handlers
 admin_bot = None
 
 def register_admin_handlers(bot):
     global admin_bot
-    admin_bot = bot  # Сохраняем объект бота для дальнейшего использования
+    admin_bot = bot
 
     @bot.message_handler(commands=['admin'])
     def admin_panel(message):

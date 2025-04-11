@@ -6,7 +6,6 @@ from bot.handlers import register_handlers
 from bot.admin import register_admin_handlers
 import bot.database as database
 
-# Убираем старые обработчики и настраиваем логирование
 logging.getLogger().handlers.clear()
 
 # Папка для логов
@@ -34,10 +33,8 @@ logging.info("🚀 Бот запускается...")
 
 def start_bot():
     try:
-        # Создаем бота
         bot = telebot.TeleBot(BOT_TOKEN)
 
-        # Подключаемся к MongoDB с передачей бота
         database.client = database.connect_to_mongo(bot)
         database.db = database.client["i_never_bot"]
         database.users_collection = database.db["Users"]

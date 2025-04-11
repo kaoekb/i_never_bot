@@ -2,7 +2,7 @@ from telebot import types
 import random
 from data.question import question
 import logging
-import bot.database as db  # Импортируем модуль database целиком
+import bot.database as db
 
 def register_handlers(bot):
     @bot.message_handler(commands=['start'])

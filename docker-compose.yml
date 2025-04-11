@@ -7,7 +7,6 @@ services:
     environment:
       - Token_tg=${Token_tg}
       - Token_MDB=${Token_MDB}
-
       - Your_user_ID=${Your_user_ID}
     volumes:
       - ./logs:/app/logs

@@ -6,10 +6,8 @@ ENV $(cat .env | xargs)
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Создаем папку логов с правами
 RUN mkdir -p logs && chmod 777 logs
 
-# Копируем весь проект
 COPY . .
 
 # Удаляем лог при каждом запуске контейнера
